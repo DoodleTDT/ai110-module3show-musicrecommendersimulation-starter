@@ -11,7 +11,6 @@ def make_small_recommender() -> Recommender:
             energy=0.8,
             tempo_bpm=120,
             valence=0.9,
-            danceability=0.8,
             acousticness=0.2,
         ),
         Song(
@@ -23,7 +22,6 @@ def make_small_recommender() -> Recommender:
             energy=0.4,
             tempo_bpm=80,
             valence=0.6,
-            danceability=0.5,
             acousticness=0.9,
         ),
     ]

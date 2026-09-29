@@ -15,7 +15,6 @@ class Song:
     energy: float
     tempo_bpm: float
     valence: float
-    danceability: float
     acousticness: float
 
 @dataclass
