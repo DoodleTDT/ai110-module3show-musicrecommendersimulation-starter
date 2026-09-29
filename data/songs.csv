@@ -39,4 +39,13 @@ id, title,                artist,           genre,      mood,    energy, tempo_b
 38, Satellite Heart,      The Dayglow Kids, pop,        happy,   0.80,   130,       0.87,    0.20
 39, Window Seat,          Tape Garden,      lofi,       focused, 0.38,   76,        0.57,    0.79
 40, Wild Horizon,         Westbound Riot,   rock,       intense, 0.86,   158,       0.54,    0.11
-
+41, Quiet Orbit,          Auralis,          ambient,    chill,   0.21,   58,        0.64,    0.95
+42, Blue Window,          Miles Arden,      jazz,       relaxed, 0.43,   84,        0.68,    0.78
+43, Afterglow Circuit,    Vela Run,         synthwave,  moody,   0.71,   108,       0.53,    0.25
+44, Paper Planets,        June Static,      indie pop,  happy,   0.66,   120,       0.79,    0.39
+45, Amber Fence,          Hollis Creek,     country,    relaxed, 0.54,   96,        0.70,    0.56
+46, Island Letters,       Riddim Harbor,    reggae,     happy,   0.61,   92,        0.81,    0.46
+47, Stillwater Prelude,   Northglass Ensemble, classical, focused, 0.16, 62,        0.41,    0.97
+48, Furnace Sky,          Ember Crown,      metal,      intense, 0.94,   164,       0.34,    0.06
+49, Brassline Bounce,     Sunday Standard,  funk,       happy,   0.83,   116,       0.90,    0.21
+50, Meadow Lines,         The Alder Sisters, folk,      relaxed, 0.36,   80,        0.63,    0.87
