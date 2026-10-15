@@ -1,4 +1,5 @@
 import csv
+import math
 from typing import List, Dict, Tuple, Optional, Union
 from dataclasses import dataclass, asdict
 
@@ -16,6 +17,19 @@ def _normalize(label: str) -> str:
 
 def _clamp(value: float, low: float = 0.0, high: float = 1.0) -> float:
     return max(low, min(high, float(value)))
+
+def _check_duplicates(songs: List[Dict]) -> None:
+    """Raises ValueError if two songs share an id, or share a title and artist."""
+    seen_ids = set()
+    seen_tracks = set()
+    for song in songs:
+        track = (_normalize(song["title"]), _normalize(song["artist"]))
+        if song["id"] in seen_ids:
+            raise ValueError(f"duplicate song id: {song['id']}")
+        if track in seen_tracks:
+            raise ValueError(f'duplicate song: "{song["title"]}" by {song["artist"]}')
+        seen_ids.add(song["id"])
+        seen_tracks.add(track)
 
 @dataclass
 class Song:
@@ -63,9 +77,18 @@ class UserProfile:
                 f"favorite_genres can list at most {MAX_FAVORITE_GENRES} genres, got {len(normalized)}"
             )
 
+        if self.likes_acoustic is not None and not isinstance(self.likes_acoustic, bool):
+            raise TypeError(
+                f"likes_acoustic must be True, False, or None, got {self.likes_acoustic!r}"
+            )
+
+        target_energy = float(self.target_energy)
+        if math.isnan(target_energy):
+            raise ValueError("target_energy must be a number, got NaN")
+
         self.favorite_genres = normalized
         self.favorite_mood = _normalize(self.favorite_mood)
-        self.target_energy = _clamp(self.target_energy)
+        self.target_energy = _clamp(target_energy)
 
 class Recommender:
     """
@@ -73,6 +96,7 @@ class Recommender:
     Required by tests/test_recommender.py
     """
     def __init__(self, songs: List[Song]):
+        _check_duplicates([asdict(song) for song in songs])
         self.songs = songs
 
     def recommend(self, user: UserProfile, k: int = 5) -> List[Song]:
@@ -146,9 +170,9 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
         score += MOOD_WEIGHT
         reasons.append(f'mood match: "{song_mood}" (+{MOOD_WEIGHT:.1f})')
 
-    # Energy: closer to the target earns more
+    # Energy: closer to the target earns more, never below 0
     song_energy = float(song["energy"])
-    energy_points = ENERGY_WEIGHT * (1 - abs(song_energy - user.target_energy))
+    energy_points = max(0.0, ENERGY_WEIGHT * (1 - abs(song_energy - user.target_energy)))
     score += energy_points
     reasons.append(f"energy {song_energy:.2f} vs target {user.target_energy:.2f} (+{energy_points:.2f})")
 
@@ -171,6 +195,11 @@ def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tup
     Functional implementation of the recommendation logic.
     Required by src/main.py
     """
+    if k < 0:
+        print(f"Please enter a positive number for k (got {k}).")
+        return []
+
+    _check_duplicates(songs)
     target_energy = _clamp(user_prefs["target_energy"])
     scored = []
     for song in songs:
