@@ -36,7 +36,7 @@ The scoring rule for each song goes as follows:
 3| Energy is also weighted at 2.0 points. If the energy is closer to the target energy in `UserProfile`, it is given more points.
 - Example: Target energy of 0.20 will award more points to songs with 0.12 energy compared to songs with 0.78 energy
 
-4| Acousticness is the lowest weight of 1.0 point. If the user likes acoustics, then each song will be scored higher the more acoustics it has. Same goes for if the user does not want acoustics. Songs with less will be scored higher in that category.
+4| Acousticness is the lowest weight of 1.0 point, and is an optional preference. If the user likes acoustics, then each song will be scored higher the more acoustics it has. Same goes for if the user does not want acoustics. Songs with less will be scored higher in that category. If acoustics are left out by the user, than it will not be considered during the final score.
 
 Every song will go through these scoring rules, and the songs with the highest scores will be added to the recommendation list first.
 
