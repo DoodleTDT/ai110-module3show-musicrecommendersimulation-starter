@@ -76,7 +76,7 @@ pytest
 ---
 
 ## Sample Recommendation Output
-
+```
 User profile: genres=pop, mood=happy, energy=0.80, likes_acoustic=False
 
 Top recommendations:
@@ -110,7 +110,7 @@ Top recommendations:
      - mood match: "happy" (+2.0)
      - energy 0.71 vs target 0.80 (+1.82)
      - acousticness 0.31, prefers non-acoustic (+0.69)
-
+```
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
 
