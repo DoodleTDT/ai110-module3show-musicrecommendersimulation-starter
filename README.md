@@ -77,16 +77,40 @@ pytest
 
 ## Sample Recommendation Output
 
-Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
+User profile: genres=pop, mood=happy, energy=0.80, likes_acoustic=False
 
-```
-# e.g.:
-# User profile: genre=indie, mood=chill, energy=low
-# Recommendations:
-#   1. ...
-#   2. ...
-#   3. ...
-```
+Top recommendations:
+
+1. Satellite Heart by The Dayglow Kids - Score: 8.80/9.00
+     - genre match: "pop" (+4.0)
+     - mood match: "happy" (+2.0)
+     - energy 0.80 vs target 0.80 (+2.00)
+     - acousticness 0.20, prefers non-acoustic (+0.80)
+
+2. Sunrise City by Neon Echo - Score: 8.78/9.00
+     - genre match: "pop" (+4.0)
+     - mood match: "happy" (+2.0)
+     - energy 0.82 vs target 0.80 (+1.96)
+     - acousticness 0.18, prefers non-acoustic (+0.82)
+
+3. Bright Weather by Mira Sol - Score: 8.64/9.00
+     - genre match: "pop" (+4.0)
+     - mood match: "happy" (+2.0)
+     - energy 0.74 vs target 0.80 (+1.88)
+     - acousticness 0.24, prefers non-acoustic (+0.76)
+
+4. Rooftop Lights by Indigo Parade - Score: 8.57/9.00
+     - genre match: "indie pop" contains "pop" (+4.0)
+     - mood match: "happy" (+2.0)
+     - energy 0.76 vs target 0.80 (+1.92)
+     - acousticness 0.35, prefers non-acoustic (+0.65)
+
+5. Polaroid Summer by Violet Transit - Score: 8.51/9.00
+     - genre match: "indie pop" contains "pop" (+4.0)
+     - mood match: "happy" (+2.0)
+     - energy 0.71 vs target 0.80 (+1.82)
+     - acousticness 0.31, prefers non-acoustic (+0.69)
+
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
 
