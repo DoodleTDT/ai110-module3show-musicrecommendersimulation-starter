@@ -67,13 +67,11 @@ python -m src.main
 
 ### Running Tests
 
-Run the starter tests with:
-
 ```bash
 pytest
 ```
-
-You can add more tests in `tests/test_recommender.py`.
+................................................................         [100%]
+64 passed in 1.47s
 
 ---
 
