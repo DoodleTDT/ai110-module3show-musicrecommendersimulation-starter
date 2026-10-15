@@ -11,23 +11,34 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
+In this small music recommendation system, it will prioritize User preferences against genres (and genres associated), mood, energy, and acoustics through a weighted scale, ranking the top scored songs in a currated list. This model will assume the user does not know the songs and artists in the database, so the user will not be reccomended songs based on those two categories like other music recommenders.
 
 ---
 
 ## How The System Works
 
-Explain your design in plain language.
+Each `Song` has four things used in the system: genre, mood, energy, and acousticness. Title and artist is for display only.
 
-Some prompts to answer:
+A `UserProfile` stores: 
+- a list of favorite genres of 1 to 3 songs
+- a favorite mood
+- a preferred amount of energy from 0 to 1
+- a toggle for if user likes acoustics or not
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+The scoring rule for each song goes as follows:
 
-You can include a simple diagram or bullet list if helpful.
+1| Favorite genres are given the highest weight of 4.0 points. There are no extra rankings between a list of genres Genres that are an extension of a favorite are also weighed the same. 
+- Example: Favorite genre of `rock` == `rock` and `indie rock`
+- Example: Favorite genre of `indie rock` == `indie rock` (since it is a specific genre)
+
+2| Mood has a weighted score of 2.0 points. If the mood matches the one in the favorites, it is awarded those points.
+
+3| Energy is also weighted at 2.0 points. If the energy is closer to the target energy in `UserProfile`, it is given more points.
+- Example: Target energy of 0.20 will award more points to songs with 0.12 energy compared to songs with 0.78 energy
+
+4| Acousticness is the lowest weight of 1.0 point. If the user likes acoustics, then each song will be scored higher the more acoustics it has. Same goes for if the user does not want acoustics. Songs with less will be scored higher in that category.
+
+Every song will go through these scoring rules, and the songs with the highest scores will be added to the recommendation list first.
 
 ---
 
