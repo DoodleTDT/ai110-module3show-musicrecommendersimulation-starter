@@ -176,14 +176,16 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     score += energy_points
     reasons.append(f"energy {song_energy:.2f} vs target {user.target_energy:.2f} (+{energy_points:.2f})")
 
-    # Acousticness: optional, rewards the end of the scale the user prefers
+    # Acousticness: optional, rewards the end of the scale the user prefers.
+    # Clamped so out-of-range data stays within 0 to ACOUSTIC_WEIGHT points.
     if user.likes_acoustic is not None:
         acousticness = float(song["acousticness"])
+        clamped = _clamp(acousticness)
         if user.likes_acoustic:
-            acoustic_points = ACOUSTIC_WEIGHT * acousticness
+            acoustic_points = ACOUSTIC_WEIGHT * clamped
             preference = "likes acoustic"
         else:
-            acoustic_points = ACOUSTIC_WEIGHT * (1 - acousticness)
+            acoustic_points = ACOUSTIC_WEIGHT * (1 - clamped)
             preference = "prefers non-acoustic"
         score += acoustic_points
         reasons.append(f"acousticness {acousticness:.2f}, {preference} (+{acoustic_points:.2f})")

@@ -322,6 +322,17 @@ def test_acoustic_points_follow_preference(likes_acoustic, acousticness, expecte
     assert points == pytest.approx(expected)
 
 
+@pytest.mark.parametrize("likes_acoustic, acousticness, expected", [
+    (False, 1.5, 0.0),
+    (True, 1.5, 1.0),
+    (True, -0.5, 0.0),
+    (False, -0.5, 1.0),
+])
+def test_out_of_range_acousticness_is_clamped(likes_acoustic, acousticness, expected):
+    points, _ = acoustic_points(likes_acoustic, acousticness)
+    assert points == pytest.approx(expected)
+
+
 def test_missing_acoustic_preference_scores_zero_with_no_reason():
     points, reasons = acoustic_points(None, 0.9)
     assert points == pytest.approx(0.0)
