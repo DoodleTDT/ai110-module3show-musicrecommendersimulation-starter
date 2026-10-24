@@ -76,6 +76,7 @@ pytest
 ---
 
 ## Sample Recommendation Output
+Example 1
 ```
 User profile: genres=pop, mood=happy, energy=0.80, likes_acoustic=False
 
@@ -112,31 +113,111 @@ Top recommendations:
      - acousticness 0.31, prefers non-acoustic (+0.69)
 ```
 
+Example 2
+```
+User profile: genres=rock, mood=sad, energy=0.30, likes_acoustic=True
+
+Top recommendations:
+
+1. Wild Horizon by Westbound Riot - Score: 4.99/9.00
+     - genre match: "rock" (+4.0)
+     - energy 0.86 vs target 0.30 (+0.88)
+     - acousticness 0.11, likes acoustic (+0.11)
+
+2. Signal Fire by Granite Avenue - Score: 4.96/9.00
+     - genre match: "rock" (+4.0)
+     - energy 0.88 vs target 0.30 (+0.84)
+     - acousticness 0.12, likes acoustic (+0.12)
+
+3. Storm Runner by Voltline - Score: 4.88/9.00
+     - genre match: "rock" (+4.0)
+     - energy 0.91 vs target 0.30 (+0.78)
+     - acousticness 0.10, likes acoustic (+0.10)
+
+4. Spacewalk Thoughts by Orbit Bloom - Score: 2.88/9.00
+     - energy 0.28 vs target 0.30 (+1.96)
+     - acousticness 0.92, likes acoustic (+0.92)
+
+5. Winter Nocturne by Rowan Ensemble - Score: 2.81/9.00
+     - energy 0.25 vs target 0.30 (+1.90)
+     - acousticness 0.91, likes acoustic (+0.91)
+```
+
+Example 3
+```
+User profile: genres=jazz, classical, blues, mood=relaxed, energy=0.50, likes_acoustic=None
+
+Top recommendations:
+
+1. Blue Hour Cafe by Ellis Row - Score: 7.88/9.00
+     - genre match: "jazz" (+4.0)
+     - mood match: "relaxed" (+2.0)
+     - energy 0.44 vs target 0.50 (+1.88)
+
+2. Blue Window by Miles Arden - Score: 7.86/9.00
+     - genre match: "jazz" (+4.0)
+     - mood match: "relaxed" (+2.0)
+     - energy 0.43 vs target 0.50 (+1.86)
+
+3. Coffee Shop Stories by Slow Stereo - Score: 7.74/9.00
+     - genre match: "jazz" (+4.0)
+     - mood match: "relaxed" (+2.0)
+     - energy 0.37 vs target 0.50 (+1.74)
+
+4. Winter Nocturne by Rowan Ensemble - Score: 5.50/9.00
+     - genre match: "classical" (+4.0)
+     - energy 0.25 vs target 0.50 (+1.50)
+
+5. Glass Cathedral by Aster Quartet - Score: 5.44/9.00
+     - genre match: "classical" (+4.0)
+     - energy 0.22 vs target 0.50 (+1.44)
+```
+
+Example 4
+```
+User profile: genres=lofi, rock, mood=relaxed, energy=0.40, likes_acoustic=True
+
+Top recommendations:
+
+1. Focus Flow by LoRoom - Score: 6.78/9.00
+     - genre match: "lofi" (+4.0)
+     - energy 0.40 vs target 0.40 (+2.00)
+     - acousticness 0.78, likes acoustic (+0.78)
+
+2. Library Rain by Paper Lanterns - Score: 6.76/9.00
+     - genre match: "lofi" (+4.0)
+     - energy 0.35 vs target 0.40 (+1.90)
+     - acousticness 0.86, likes acoustic (+0.86)
+
+3. Window Seat by Tape Garden - Score: 6.75/9.00
+     - genre match: "lofi" (+4.0)
+     - energy 0.38 vs target 0.40 (+1.96)
+     - acousticness 0.79, likes acoustic (+0.79)
+
+4. Soft Transit by Lowline - Score: 6.68/9.00
+     - genre match: "lofi" (+4.0)
+     - energy 0.33 vs target 0.40 (+1.86)
+     - acousticness 0.82, likes acoustic (+0.82)
+
+5. Midnight Coding by LoRoom - Score: 6.67/9.00
+     - genre match: "lofi" (+4.0)
+     - energy 0.42 vs target 0.40 (+1.96)
+     - acousticness 0.71, likes acoustic (+0.71)
+```
+
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
 
 ---
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
 
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
 
 ---
 

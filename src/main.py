@@ -18,13 +18,37 @@ MAX_SCORE = 9.0
 def main() -> None:
     songs = load_songs("data/songs.csv")
 
-    # Starter example profile
+    # Example 1: Happy pop, high energy, doesn't care about acousticness
     user_prefs = {
         "favorite_genres": ["pop"],   # up to 3 genres
         "favorite_mood": "happy",
         "target_energy": 0.8,         # 0.0 to 1.0
         "likes_acoustic": False,      # True, False, or None to ignore acousticness
     }
+
+    # # Example 2: Sad rock, low energy, likes acoustic
+    # user_prefs = {
+    #     "favorite_genres": ["rock"],
+    #     "favorite_mood": "sad",
+    #     "target_energy": 0.3,
+    #     "likes_acoustic": True,
+    # }
+
+    # # Example 3: Mixed genres, medium energy, doesn't care about acousticness
+    # user_prefs = {
+    #     "favorite_genres": ["jazz", "classical", "blues"],
+    #     "favorite_mood": "relaxed",
+    #     "target_energy": 0.5,
+    #     "likes_acoustic": None,
+    # }
+
+    # # Example 4: Lofi and Rock, low energy, likes acoustic
+    # user_prefs = {
+    #     "favorite_genres": ["lofi", "rock"],
+    #     "favorite_mood": "relaxed",
+    #     "target_energy": 0.4,
+    #     "likes_acoustic": True,
+    # }
 
     recommendations = recommend_songs(user_prefs, songs, k=5)
 
