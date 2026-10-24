@@ -211,13 +211,44 @@ Top recommendations:
 
 ## Experiments You Tried
 
+- I flipped the weights of genre and energy, so genre was worth 2.0, and energy 4.0. This had the biggest effect on Example 2 in `Sample Recommendation Output`, where no rock songs were present in the recommendations. An unfavorable change if the User wishes for a genre more than energy. A sample of this change is provided below.
+Experiment on Example 2
+```
+User profile: genres=rock, mood=sad, energy=0.30, likes_acoustic=True
 
+Top recommendations:
+
+1. Spacewalk Thoughts by Orbit Bloom - Score: 4.84/9.00
+     - energy 0.28 vs target 0.30 (+3.92)
+     - acousticness 0.92, likes acoustic (+0.92)
+
+2. Winter Nocturne by Rowan Ensemble - Score: 4.71/9.00
+     - energy 0.25 vs target 0.30 (+3.80)
+     - acousticness 0.91, likes acoustic (+0.91)
+
+3. Soft Transit by Lowline - Score: 4.70/9.00
+     - energy 0.33 vs target 0.30 (+3.88)
+     - acousticness 0.82, likes acoustic (+0.82)
+
+4. Library Rain by Paper Lanterns - Score: 4.66/9.00
+     - energy 0.35 vs target 0.30 (+3.80)
+     - acousticness 0.86, likes acoustic (+0.86)
+
+5. Meadow Lines by The Alder Sisters - Score: 4.63/9.00
+     - energy 0.36 vs target 0.30 (+3.76)
+     - acousticness 0.87, likes acoustic (+0.87)
+
+```
 
 ---
 
 ## Limitations and Risks
 
+- If the number of songs asked for is bigger than the amount of songs in the genre, than genre will no longer matter to the score. It will only add points from energy, mood, and acoustics. While working as intended, since genre has the most weight in my system, it may make the recommendation score looked scewed. Reference Example 2 in `Sample Recommendation Output`
 
+- User can choose up to 3 genres. These genres cannot be ranked, and their for don't hold more weight than the other. So whatever comes first in the list is what will be sought out first.
+
+- Multiple genre matches, like in Example 3 in `Sample Recommendation Output`, won't show all genres choosen if the number of songs asked for does not accommodate all of them. Since the user in Example 3 only asked for 5 songs, blues was not considered in the roster. Good for matching the best songs based on all categories, but bad if the User wanted songs from all genres.
 
 ---
 

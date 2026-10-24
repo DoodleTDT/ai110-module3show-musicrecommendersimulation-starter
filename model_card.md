@@ -63,12 +63,7 @@ Prompts:
 
 Where the system struggles or behaves unfairly. 
 
-Prompts:  
-
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+- System struggles with genres outside of pop due to the number of pop songs in the dataset  
 
 ---
 
