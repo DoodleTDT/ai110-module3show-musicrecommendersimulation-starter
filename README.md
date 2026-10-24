@@ -246,7 +246,7 @@ Top recommendations:
 
 - If the number of songs asked for is bigger than the amount of songs in the genre, than genre will no longer matter to the score. It will only add points from energy, mood, and acoustics. While working as intended, since genre has the most weight in my system, it may make the recommendation score looked scewed. Reference Example 2 in `Sample Recommendation Output`
 
-- User can choose up to 3 genres. These genres cannot be ranked, and their for don't hold more weight than the other. So whatever comes first in the list is what will be sought out first.
+- User can choose up to 3 genres. These genres cannot be ranked, and therefore don't hold more weight than the other. So whatever comes first in the list is what will be sought out first.
 
 - Multiple genre matches, like in Example 3 in `Sample Recommendation Output`, won't show all genres choosen if the number of songs asked for does not accommodate all of them. Since the user in Example 3 only asked for 5 songs, blues was not considered in the roster. Good for matching the best songs based on all categories, but bad if the User wanted songs from all genres.
 
